@@ -54,20 +54,20 @@ public class ListePersonne_Dynamique {
     public boolean supprimer(Personne p) {
         // Variable de vérification
         boolean suppressionReussie = false;
-        int pos = -1;
+        int trouveIndex = -1;
 
         // Trouver index à supprimer
         for (int i = 0; i < this.personnes.length; i++) {
             if (this.personnes[i] == p) {
-                pos = i;
+                trouveIndex = i;
                 suppressionReussie = true;
                 break;
             }
         }
 
         // Si l'élément n'a pas été trouvé, retourner false
-        if (pos == -1) {
-            return false;
+        if (trouveIndex == -1) {
+            suppressionReussie = false;
         }
 
         // Diminuer la taille de tableau par rapport à l'élément supprimé
@@ -75,7 +75,7 @@ public class ListePersonne_Dynamique {
 
         // Copier les éléments restants dans le nouveau tableau
         for (int i = 0, j = 0; i < this.personnes.length; i++) {
-            if (i != pos) {
+            if (i != trouveIndex) {
                 listeSupprime[j] = this.personnes[i];
                 j++;
             }
@@ -89,20 +89,14 @@ public class ListePersonne_Dynamique {
 
     public void afficher() {
 
-        if (this.personnes.length == 0) {
-            System.out.println("La liste est vide.");
-            for (int i = 0; i < this.personnes.length; i++) {
-                System.out.println(this.personnes[i]);
-            }
-            System.out.println("La taille du tableau : " + this.personnes.length);
-
-        } else {
-
-            System.out.println("Liste des personnes :");
+        if (this.personnes.length != 0) {
+            System.out.println("Liste de personnes :");
             for (int i = 0; i < this.personnes.length; i++) {
                 System.out.println((i + 1) + ". " + this.personnes[i]);
             }
             System.out.println("La taille du tableau : " + this.personnes.length);
+        } else {
+            System.out.println("La liste est vide");
         }
     }
 
