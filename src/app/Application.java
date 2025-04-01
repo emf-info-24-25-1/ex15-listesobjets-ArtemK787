@@ -29,6 +29,8 @@ public class Application {
         Personne p12 = new Personne("Tim", "Vic");
         Personne p13 = new Personne("Covert", "Harry");
 
+        Personne pNonPresent = new Personne("Joker", "Problem");
+
         Personne[] personnes = new Personne[] { p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13 };
 
         ListePersonne_Dynamique listeDynamique = new ListePersonne_Dynamique();
@@ -37,6 +39,7 @@ public class Application {
             listeDynamique.ajouter(personnes[i]);
         }
 
+        listeDynamique.supprimer(pNonPresent);
         System.out.println("----------------------------------------------------");
         System.out.println("ListePersonne_Dynamique");
         System.out.println("----------------------------------------------------");
@@ -45,5 +48,7 @@ public class Application {
         listeDynamique.vider();
         System.out.println("Nombre de personnes : " + listeDynamique.getNombre());
 
+        
     }
+        
 }

@@ -60,29 +60,29 @@ public class ListePersonne_Dynamique {
         for (int i = 0; i < this.personnes.length; i++) {
             if (this.personnes[i] == p) {
                 trouveIndex = i;
-                suppressionReussie = true;
                 break;
             }
         }
 
         // Si l'élément n'a pas été trouvé, retourner false
-        if (trouveIndex == -1) {
-            suppressionReussie = false;
-        }
+        if (trouveIndex != -1) {
+            // Diminuer la taille de tableau par rapport à l'élément supprimé
+            Personne[] listeSupprime = new Personne[this.personnes.length - 1];
 
-        // Diminuer la taille de tableau par rapport à l'élément supprimé
-        Personne[] listeSupprime = new Personne[this.personnes.length - 1];
-
-        // Copier les éléments restants dans le nouveau tableau
-        for (int i = 0, j = 0; i < this.personnes.length; i++) {
-            if (i != trouveIndex) {
-                listeSupprime[j] = this.personnes[i];
-                j++;
+            // Copier les éléments restants dans le nouveau tableau
+            for (int i = 0, j = 0; i < this.personnes.length; i++) {
+                if (i != trouveIndex) {
+                    listeSupprime[j] = this.personnes[i];
+                    j++;
+                }
             }
-        }
 
-        // Remplacer ancient tableau par le nouveau
-        this.personnes = listeSupprime;
+            // Remplacer ancient tableau par le nouveau
+            this.personnes = listeSupprime;
+
+            suppressionReussie = true;
+
+        }
 
         return suppressionReussie;
     }
