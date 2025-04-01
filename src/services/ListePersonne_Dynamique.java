@@ -52,44 +52,58 @@ public class ListePersonne_Dynamique {
     }
 
     public boolean supprimer(Personne p) {
+        // Variable de vérification
+        boolean suppressionReussie = false;
+        int pos = -1;
 
-        // variables de vérification
-
-        boolean suppresionReussi = false;
-        int indexSuppresion = -1;
-
-        // vide la cellule concernée
-
+        // Trouver index à supprimer
         for (int i = 0; i < this.personnes.length; i++) {
             if (this.personnes[i] == p) {
-                indexSuppresion = i;
-                suppresionReussi = true;
+                pos = i;
+                suppressionReussie = true;
                 break;
             }
         }
 
-        // diminuer la taille du tableau
+        // Si l'élément n'a pas été trouvé, retourner false
+        if (pos == -1) {
+            return false;
+        }
 
+        // Diminuer la taille de tableau par rapport à l'élément supprimé
         Personne[] listeSupprime = new Personne[this.personnes.length - 1];
 
-        // copier les éléments sauf la valeur supprimée
-
-        int j = 0;
-        for (int i = 0; i < this.personnes.length; i++) {
-            if (i != indexSuppresion) {
+        // Copier les éléments restants dans le nouveau tableau
+        for (int i = 0, j = 0; i < this.personnes.length; i++) {
+            if (i != pos) {
                 listeSupprime[j] = this.personnes[i];
                 j++;
             }
         }
 
-        // remplacer l'ancient tableau par le nouveau
-
+        // Remplacer ancient tableau par le nouveau
         this.personnes = listeSupprime;
-        return suppresionReussi;
 
+        return suppressionReussie;
     }
 
     public void afficher() {
-        // A faire !
+
+        if (this.personnes.length == 0) {
+            System.out.println("La liste est vide.");
+            for (int i = 0; i < this.personnes.length; i++) {
+                System.out.println(this.personnes[i]);
+            }
+            System.out.println("La taille du tableau : " + this.personnes.length);
+
+        } else {
+
+            System.out.println("Liste des personnes :");
+            for (int i = 0; i < this.personnes.length; i++) {
+                System.out.println((i + 1) + ". " + this.personnes[i]);
+            }
+            System.out.println("La taille du tableau : " + this.personnes.length);
+        }
     }
+
 }

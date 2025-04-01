@@ -1,9 +1,8 @@
 package app;
 
 import models.Personne;
-import services.ListePersonne_AvecTrous;
 import services.ListePersonne_Dynamique;
-import services.ListePersonne_SansTrous;
+
 
 public class Application {
 
@@ -33,13 +32,9 @@ public class Application {
         Personne[] personnes = new Personne[] { p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13 };
 
         ListePersonne_Dynamique listeDynamique = new ListePersonne_Dynamique();
-        ListePersonne_SansTrous listeSansTrous = new ListePersonne_SansTrous();
-        ListePersonne_AvecTrous listeAvecTrous = new ListePersonne_AvecTrous();
 
         for (int i = 0; i < personnes.length; i++) {
             listeDynamique.ajouter(personnes[i]);
-            listeSansTrous.ajouter(personnes[i]);
-            listeAvecTrous.ajouter(personnes[i]);
         }
 
         System.out.println("----------------------------------------------------");
@@ -49,22 +44,6 @@ public class Application {
         listeDynamique.afficher();
         listeDynamique.vider();
         System.out.println("Nombre de personnes : " + listeDynamique.getNombre());
-
-        System.out.println("----------------------------------------------------");
-        System.out.println("ListePersonne_SansTrous");
-        System.out.println("----------------------------------------------------");
-        System.out.println("Nombre de personnes : " + listeSansTrous.getNombre());
-        listeSansTrous.afficher();
-        listeSansTrous.vider();
-        System.out.println("Nombre de personnes : " + listeSansTrous.getNombre());
-
-        System.out.println("----------------------------------------------------");
-        System.out.println("ListePersonne_AvecTrous");
-        System.out.println("----------------------------------------------------");
-        System.out.println("Nombre de personnes : " + listeAvecTrous.getNombre());
-        listeAvecTrous.afficher();
-        listeAvecTrous.vider();
-        System.out.println("Nombre de personnes : " + listeAvecTrous.getNombre());
 
     }
 }
